@@ -1,5 +1,6 @@
 const connectDB = require('./db/connection.js');
 const todos = require('./routes/todos.js');
+const user = require('./routes/user.js');
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 const { json } = require('express');
@@ -8,6 +9,7 @@ require('dotenv').config();
 
 app.use(json());
 app.use('/api/todos', todos);
+app.use('/user', user);
 
 connectDB(process.env.MONGO_URI);
 
