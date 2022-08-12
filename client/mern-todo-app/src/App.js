@@ -1,9 +1,11 @@
 import './App.css';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
     <div className="App">
-      <h1>hello world!</h1>
+      <RegisterPage />
     </div>
   );
 }
