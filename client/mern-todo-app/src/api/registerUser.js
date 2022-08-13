@@ -8,8 +8,24 @@ const registerUser = async (userCredentials, dispatch) => {
     const { userId } = response.data;
 
     dispatch({ type: 'REGISTER_USER', payload: { userId } });
+    dispatch({
+      type: 'SET_SNACKBAR',
+      payload: {
+        isSnackbarShowing: true,
+        snackbarMessage: 'Account created',
+        snackbarSeverity: 'success',
+      },
+    });
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
+    dispatch({
+      type: 'SET_SNACKBAR',
+      payload: {
+        isSnackbarShowing: true,
+        snackbarMessage: 'Wrong username or password',
+        snackbarSeverity: 'error',
+      },
+    });
   }
 };
 
