@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const User = require('../../db/model/users.js');
 
-// route /user/signup
-const signup = async (req, res) => {
+// route /user/register
+const register = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -11,9 +11,9 @@ const signup = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    await User.create({ username, password: hashedPassword });
+    const newUser = await User.create({ username, password: hashedPassword });
 
-    return res.status(201).json('user created');
+    return res.status(201).json({ userId: newUser.id });
   } catch (error) {
     console.log(error);
     if (error.code === 11000) {
@@ -23,4 +23,4 @@ const signup = async (req, res) => {
   }
 };
 
-module.exports = signup;
+module.exports = register;

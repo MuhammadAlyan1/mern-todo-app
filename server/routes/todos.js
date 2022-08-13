@@ -6,7 +6,7 @@ const createTodo = require('../controllers/todos/createTodo');
 const updateTodo = require('../controllers/todos/updateTodo');
 const deleteTodo = require('../controllers/todos/deleteTodo');
 
-router.get('/', getAllTodos);
+router.get('/:userId', getAllTodos);
 
 router.get('/:todoId', getTodo);
 
