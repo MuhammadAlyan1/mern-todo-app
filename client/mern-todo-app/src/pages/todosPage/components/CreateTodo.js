@@ -6,6 +6,7 @@ import { Fab, Tooltip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import createTodo from '../../../api/createTodo';
 import { todoAppContext } from '../../../App';
+import ShowSnackbar from '../../../components/ShowSnackbar';
 
 const CreateTodo = () => {
   const { state, dispatch } = useContext(todoAppContext);
@@ -14,6 +15,17 @@ const CreateTodo = () => {
   const { userId } = state;
 
   const handleCreateTodo = () => {
+    if (todoText === '') {
+      dispatch({
+        type: 'SET_SNACKBAR',
+        payload: {
+          isSnackbarShowing: true,
+          snackbarMessage: 'Todo contents cannot be empty',
+          snackbarSeverity: 'warning',
+        },
+      });
+      return;
+    }
     createTodo({ userId, todoText, dispatch });
     setTodoText('');
   };
@@ -66,6 +78,7 @@ const CreateTodo = () => {
           </Stack>
         </Box>
       </Modal>
+      {state.isSnackbarShowing && <ShowSnackbar />}
     </>
   );
 };
