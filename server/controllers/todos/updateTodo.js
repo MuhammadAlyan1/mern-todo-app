@@ -1,9 +1,8 @@
 const Todos = require('../../db/model/todos.js');
 
-// route: api/todos/:id
+// route: api/todos/
 const updateTodo = async (req, res) => {
-  const { todoId } = req.params;
-  const { contents, isCompleted } = req.body;
+  const { todoId, contents, isCompleted } = req.body;
 
   if (!todoId || !contents || isCompleted === undefined) {
     return res
@@ -12,7 +11,7 @@ const updateTodo = async (req, res) => {
   }
 
   try {
-    const selectedTodo = await Todos.findOne({ todoId });
+    const selectedTodo = await Todos.findById(todoId);
     selectedTodo.contents = contents;
     selectedTodo.isCompleted = isCompleted;
     await selectedTodo.save();
