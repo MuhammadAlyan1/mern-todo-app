@@ -1,10 +1,9 @@
 const Todos = require('../../db/model/todos.js');
 const User = require('../../db/model/users.js');
 
-// route: api/todos/:id
+// route: api/todos/
 const deleteTodo = async (req, res) => {
-  const { todoId } = req.params;
-  const { userId } = req.body;
+  const { todoId, userId } = req.body;
 
   if (!userId || !todoId) {
     return res.status(401).json('Please provide user id and todo id');
