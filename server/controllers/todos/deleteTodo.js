@@ -1,5 +1,7 @@
+const mongoose = require('mongoose');
 const Todos = require('../../db/model/todos.js');
 const User = require('../../db/model/users.js');
+const ObjectId = mongoose.ObjectId;
 
 // route: api/todos/
 const deleteTodo = async (req, res) => {
@@ -16,11 +18,17 @@ const deleteTodo = async (req, res) => {
       return res.status(404).json('User does not exist');
     }
 
-    const deletedTodo = await Todos.deleteOne({ todoId });
-    user.listOfTodos = user.listOfTodos.filter((todo) => todo.id !== todoId);
+    const todoObjectId = mongoose.Types.ObjectId(todoId);
+
+    const deletedTodo = await Todos.deleteOne({
+      _id: todoObjectId,
+    });
+    user.listOfTodos = user.listOfTodos.filter((todo) => todo !== todoId);
+    user.save();
 
     return res.status(200).json({ deletedTodo });
   } catch (error) {
+    console.log(error);
     return res.status(401).json('Please provide todo ID');
   }
 };
