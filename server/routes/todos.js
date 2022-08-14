@@ -12,7 +12,7 @@ router.get('/:todoId', getTodo);
 
 router.post('/', createTodo);
 
-router.put('/:todoId', updateTodo);
+router.put('/', updateTodo);
 
 router.delete('/:todoId', deleteTodo);
 
