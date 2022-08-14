@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Todos = require('../../db/model/todos.js');
 const User = require('../../db/model/users.js');
-const ObjectId = mongoose.ObjectId;
 
 // route: api/todos/
 const deleteTodo = async (req, res) => {
