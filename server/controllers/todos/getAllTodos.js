@@ -4,8 +4,7 @@ const User = require('../../db/model/users.js');
 // route: api/todos/
 const getAllTodos = async (req, res) => {
   const { userId } = req.params;
-  console.log(req.params);
-  console.log(req.body);
+
   if (!userId) {
     return res.status(400).json('Please provide user id');
   }
