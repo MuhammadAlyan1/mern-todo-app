@@ -4,6 +4,7 @@ import React, { useState, useContext } from 'react';
 import { todoAppContext } from '../../../App';
 import registerUser from '../../../api/registerUser';
 import ShowSnackbar from '../../../components/ShowSnackbar';
+import { Link, Navigate } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -12,6 +13,7 @@ const Register = () => {
 
   return (
     <>
+      {state.userId && <Navigate to="/todosPage" />}
       <Grid
         container
         alignItems="center"
@@ -25,6 +27,7 @@ const Register = () => {
               xs: '300px',
               sm: '400px',
             },
+            color: '#eee',
           }}
         >
           <Typography textAlign="center" variant="h4" component="div">
@@ -53,9 +56,17 @@ const Register = () => {
           </Button>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Typography>Already have an account?</Typography>
-            <Button variant="text" color="error">
-              Login
-            </Button>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="text"
+                color="error"
+                sx={{
+                  '&:hover': { backgroundColor: 'transparent' },
+                }}
+              >
+                Login
+              </Button>
+            </Link>
           </Box>
         </Stack>
       </Grid>
