@@ -4,14 +4,25 @@ import './App.css';
 import LoginPage from './pages/loginPage/index';
 import RegisterPage from './pages/registerPage/index';
 import TodosPage from './pages/todosPage/index';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export const todoAppContext = createContext();
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 function App() {
   const defaultValues = {
-    userId: '62f7c994a518c7756bf8a63e',
+    // userId: '62f7c994a518c7756bf8a63e',
+    userId: '',
     listOfTodos: [],
-    isSnackbarShowing: '',
+    isSnackbarShowing: false,
     snackbarMessage: '',
     snackbarSeverity: '',
   };
@@ -20,9 +31,17 @@ function App() {
 
   return (
     <todoAppContext.Provider value={{ state, dispatch }}>
-      <div className="App">
-        <TodosPage />
-      </div>
+      <ThemeProvider theme={darkTheme}>
+        <div className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/todosPage" element={<TodosPage />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </ThemeProvider>
     </todoAppContext.Provider>
   );
 }
