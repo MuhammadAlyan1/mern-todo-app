@@ -36,7 +36,7 @@ const CreateTodo = () => {
         <Fab
           color="primary"
           sx={{
-            position: 'absolute',
+            position: 'fixed',
             bottom: 30,
             right: 30,
           }}
@@ -57,7 +57,7 @@ const CreateTodo = () => {
             left: '50%',
             transform: 'translate(-50%, -50%)',
             padding: 2,
-            backgroundColor: 'white',
+            backgroundColor: '#333',
             width: { xs: '250px', sm: '500px' },
             height: '100px',
             borderRadius: 2,
