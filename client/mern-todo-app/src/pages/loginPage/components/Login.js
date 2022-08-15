@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import { todoAppContext } from '../../../App';
 import loginUser from '../../../api/loginUser';
 import ShowSnackbar from '../../../components/ShowSnackbar';
+import { Link, Navigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -12,54 +13,64 @@ const Login = () => {
   const { state, dispatch } = useContext(todoAppContext);
 
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyContent="center"
-      style={{ minHeight: '90vh' }}
-    >
-      <Stack
-        spacing={1.5}
-        sx={{
-          minWidth: {
-            xs: '300px',
-            sm: '400px',
-          },
-        }}
+    <>
+      {state.userId && <Navigate to="/todosPage" />}
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: '90vh' }}
       >
-        <Typography textAlign="center" variant="h4" component="div">
-          Login
-        </Typography>
-        <TextField
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-          label="Username"
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          label="Password"
-          type="password"
-          variant="outlined"
-          size="small"
-        />
-        <Button
-          variant="contained"
-          onClick={() => loginUser({ username, password }, dispatch)}
+        <Stack
+          spacing={1.5}
+          sx={{
+            minWidth: {
+              xs: '300px',
+              sm: '400px',
+            },
+            color: '#eee',
+          }}
         >
-          Login
-        </Button>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography>Don't have an account yet?</Typography>
-          <Button variant="text" color="error">
-            Register
+          <Typography textAlign="center" variant="h4" component="div">
+            Login
+          </Typography>
+          <TextField
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+            label="Username"
+            variant="outlined"
+            size="small"
+          />
+          <TextField
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            label="Password"
+            type="password"
+            variant="outlined"
+            size="small"
+          />
+          <Button
+            variant="contained"
+            onClick={() => loginUser({ username, password }, dispatch)}
+          >
+            Login
           </Button>
-        </Box>
-      </Stack>
-      {state.isSnackbarShowing && <ShowSnackbar />}
-    </Grid>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography>Don't have an account yet?</Typography>
+            <Link to="/register" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="text"
+                color="error"
+                sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+              >
+                Register
+              </Button>
+            </Link>
+          </Box>
+        </Stack>
+        {state.isSnackbarShowing && <ShowSnackbar />}
+      </Grid>
+    </>
   );
 };
 
