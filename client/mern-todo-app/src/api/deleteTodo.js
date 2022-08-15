@@ -1,18 +1,17 @@
 import axios from 'axios';
 
-const createTodo = async ({ userId, todoText, dispatch }) => {
+const deleteTodo = async ({ todoId, userId, dispatch }) => {
   const url = 'http://localhost:5000/api/todos';
   try {
-    const response = await axios.post(url, { contents: todoText, userId });
-
-    dispatch({ type: 'ADD_NEW_TODO', payload: { newTodo: response.data } });
+    await axios.delete(url, { data: { userId, todoId } });
+    dispatch({ type: 'DELETE_TODO', payload: { todoId } });
 
     dispatch({
       type: 'SET_SNACKBAR',
       payload: {
         isSnackbarShowing: true,
-        snackbarMessage: 'Todo Created',
-        snackbarSeverity: 'success',
+        snackbarMessage: 'Todo Deleted',
+        snackbarSeverity: 'error',
       },
     });
   } catch (error) {
@@ -21,11 +20,11 @@ const createTodo = async ({ userId, todoText, dispatch }) => {
       type: 'SET_SNACKBAR',
       payload: {
         isSnackbarShowing: true,
-        snackbarMessage: 'There was an error',
+        snackbarMessage: 'There was an issue',
         snackbarSeverity: 'error',
       },
     });
   }
 };
 
-export default createTodo;
+export default deleteTodo;
