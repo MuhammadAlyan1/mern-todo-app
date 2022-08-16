@@ -6,6 +6,7 @@ const getAllTodos = async ({ userId, dispatch }) => {
     const response = await axios.get(url);
 
     dispatch({ type: 'SET_TODOS', payload: { todos: response.data } });
+    dispatch({ type: 'CHANGE_LOADING_STATE' });
   } catch (error) {
     console.log(error);
   }
