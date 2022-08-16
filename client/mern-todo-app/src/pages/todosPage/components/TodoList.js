@@ -31,7 +31,7 @@ const TodoList = () => {
         }}
       >
         <Typography variant="h2" color="#eee" textAlign="center" mb="20px">
-          List of Todos
+          Tasks
         </Typography>
         {listOfTodos.map((todo) => (
           <SingleTodo key={todo._id} todo={todo} />

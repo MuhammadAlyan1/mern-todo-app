@@ -10,7 +10,7 @@ import { todoAppContext } from '../../../App';
 
 const SingleTodo = ({ todo }) => {
   const { state, dispatch } = useContext(todoAppContext);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(todo.isCompleted);
   const [isEditModalShowing, setIsEditModalShowing] = useState(false);
 
   const checkTodo = ({ contents, _id, isCompleted, dispatch }) => {
@@ -27,7 +27,7 @@ const SingleTodo = ({ todo }) => {
   const HandleDeleteTodo = ({ userId, todoId, dispatch }) => {
     deleteTodo({ userId, todoId, dispatch });
   };
-  // #373737
+
   const { _id, contents, isCompleted } = todo;
   return (
     <>
@@ -44,6 +44,7 @@ const SingleTodo = ({ todo }) => {
         }}
       >
         <Checkbox
+          checked={isChecked}
           onClick={() => checkTodo({ contents, _id, isCompleted, dispatch })}
         />
         <Typography
@@ -58,12 +59,22 @@ const SingleTodo = ({ todo }) => {
           {contents}
         </Typography>
         <Tooltip title="Edit" placement="top">
-          <IconButton onClick={() => setIsEditModalShowing(true)}>
+          <IconButton
+            sx={{
+              color: 'primary.main',
+              '&:hover': { backgroundColor: 'transparent' },
+            }}
+            onClick={() => setIsEditModalShowing(true)}
+          >
             <EditIcon />
           </IconButton>
         </Tooltip>
         <Tooltip title="Delete" placement="top">
           <IconButton
+            sx={{
+              color: 'error.main',
+              '&:hover': { backgroundColor: 'transparent' },
+            }}
             onClick={() =>
               HandleDeleteTodo({ userId: state.userId, todoId: _id, dispatch })
             }

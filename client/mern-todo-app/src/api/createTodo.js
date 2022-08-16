@@ -11,7 +11,7 @@ const createTodo = async ({ userId, todoText, dispatch }) => {
       type: 'SET_SNACKBAR',
       payload: {
         isSnackbarShowing: true,
-        snackbarMessage: 'Todo Created',
+        snackbarMessage: 'Task Created',
         snackbarSeverity: 'success',
       },
     });

@@ -43,7 +43,7 @@ const EditModal = ({
       >
         <Stack direction="row" alignItems="center" mt="25px">
           <TextField
-            label="Edit Todo"
+            label="Edit Task"
             size="small"
             variant="outlined"
             fullWidth

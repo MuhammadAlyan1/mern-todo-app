@@ -19,7 +19,7 @@ const updateTodo = async ({ todoId, todoText, isCompleted, dispatch }) => {
       type: 'SET_SNACKBAR',
       payload: {
         isSnackbarShowing: true,
-        snackbarMessage: 'Todo updated',
+        snackbarMessage: 'Task updated',
         snackbarSeverity: 'success',
       },
     });

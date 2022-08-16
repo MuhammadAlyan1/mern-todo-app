@@ -32,7 +32,7 @@ const CreateTodo = () => {
 
   return (
     <>
-      <Tooltip title="Add New Todo" placement="top">
+      <Tooltip title="Add New Task" placement="top">
         <Fab
           color="primary"
           sx={{
@@ -65,7 +65,7 @@ const CreateTodo = () => {
         >
           <Stack direction="row" alignItems="center" mt="25px">
             <TextField
-              label="Add New Todo"
+              label="Add New Task"
               size="small"
               variant="outlined"
               fullWidth
