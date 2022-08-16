@@ -61,6 +61,13 @@ const reducer = (state, action) => {
       };
     }
 
+    case 'CHANGE_LOADING_STATE': {
+      return {
+        ...state,
+        isTodosLoading: false,
+      };
+    }
+
     case 'SET_SNACKBAR': {
       const { isSnackbarShowing, snackbarMessage, snackbarSeverity } = payload;
       return {
