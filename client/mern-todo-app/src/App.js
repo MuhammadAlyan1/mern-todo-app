@@ -22,6 +22,7 @@ function App() {
     // userId: '62f7c994a518c7756bf8a63e',
     userId: '',
     listOfTodos: [],
+    isTodosLoading: true,
     isSnackbarShowing: false,
     snackbarMessage: '',
     snackbarSeverity: '',
