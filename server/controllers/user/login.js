@@ -17,14 +17,18 @@ const login = async (req, res) => {
     }
 
     const userId = user.id;
-    const hashedPassword = user.password;
-    const isCorrectPassword = bcrypt.compare(password, hashedPassword);
 
-    if (!isCorrectPassword) {
-      return res.status(401).json('Incorrect password');
-    }
+    bcrypt.compare(password, user.password, (err, data) => {
+      if (err) {
+        console.log(error);
+      }
 
-    return res.status(200).json({ userId });
+      if (data) {
+        return res.status(200).json({ userId });
+      } else {
+        return res.status(401).json('Incorrect password');
+      }
+    });
   } catch (error) {
     console.log(error);
     return res.status(400).json('Something went wrong');
