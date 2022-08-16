@@ -4,6 +4,8 @@ import getAllTodos from '../../../api/getAllTodos';
 import { todoAppContext } from '../../../App';
 import SingleTodo from './SingleTodo';
 import { Navigate } from 'react-router-dom';
+import LoadingTodos from './LoadingTodos';
+import { Typography } from '@mui/material';
 
 const TodoList = () => {
   const { state, dispatch } = useContext(todoAppContext);
@@ -24,11 +26,17 @@ const TodoList = () => {
             md: '900px',
           },
           margin: 'auto',
+          marginTop: '50px',
+          marginBottom: '50px',
         }}
       >
+        <Typography variant="h2" color="#eee" textAlign="center" mb="20px">
+          List of Todos
+        </Typography>
         {listOfTodos.map((todo) => (
           <SingleTodo key={todo._id} todo={todo} />
         ))}
+        {state.isTodosLoading && <LoadingTodos />}
       </Box>
     </>
   );
