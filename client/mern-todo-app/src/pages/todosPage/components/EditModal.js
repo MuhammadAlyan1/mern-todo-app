@@ -1,8 +1,7 @@
 import { IconButton, Modal, TextField, Box } from '@mui/material';
 import { Stack } from '@mui/system';
-import React, { useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
-
+import React, { useState } from 'react';
 import updateTodo from '../../../api/updateTodo';
 
 const EditModal = ({
@@ -13,6 +12,16 @@ const EditModal = ({
 }) => {
   const [newTodoText, setNewTodoText] = useState('');
   const { _id: todoId, contents: todoText, isCompleted } = todo;
+
+  const handleEditClick = () => {
+    updateTodo({
+      todoId,
+      todoText: newTodoText,
+      isCompleted,
+      dispatch,
+    });
+    setNewTodoText('');
+  };
 
   return (
     <Modal
@@ -41,17 +50,7 @@ const EditModal = ({
             value={newTodoText}
             onChange={(e) => setNewTodoText(e.target.value)}
           />
-          <IconButton
-            shape="square"
-            onClick={() =>
-              updateTodo({
-                todoId,
-                todoText: newTodoText,
-                isCompleted,
-                dispatch,
-              })
-            }
-          >
+          <IconButton shape="square" onClick={handleEditClick}>
             <EditIcon fontSize="medium" color="primary" />
           </IconButton>
         </Stack>
