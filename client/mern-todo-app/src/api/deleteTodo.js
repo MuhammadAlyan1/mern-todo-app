@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const deleteTodo = async ({ todoId, userId, dispatch }) => {
-  const url = 'http://localhost:5000/api/todos';
+  const url = 'https://alyan-todo-list-api.herokuapp.com/api/todos';
   try {
     await axios.delete(url, { data: { userId, todoId } });
     dispatch({ type: 'DELETE_TODO', payload: { todoId } });

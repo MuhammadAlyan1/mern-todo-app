@@ -19,7 +19,6 @@ const darkTheme = createTheme({
 
 function App() {
   const defaultValues = {
-    // userId: '62f7c994a518c7756bf8a63e',
     userId: '',
     listOfTodos: [],
     isTodosLoading: true,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const updateTodo = async ({ todoId, todoText, isCompleted, dispatch }) => {
-  const url = 'http://localhost:5000/api/todos/';
+  const url = 'https://alyan-todo-list-api.herokuapp.com/api/todos/';
   try {
     const response = await axios.put(url, {
       todoId,

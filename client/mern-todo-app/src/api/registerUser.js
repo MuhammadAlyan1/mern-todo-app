@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const registerUser = async (userCredentials, dispatch) => {
-  const url = 'http://localhost:5000/user/register';
+  const url = 'https://alyan-todo-list-api.herokuapp.com/user/register';
 
   try {
     const response = await axios.post(url, userCredentials);

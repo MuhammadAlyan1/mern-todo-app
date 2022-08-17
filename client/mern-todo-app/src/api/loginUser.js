@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const loginUser = async (userCredentials, dispatch) => {
-  const url = 'http://localhost:5000/user/login';
+  const url = 'https://alyan-todo-list-api.herokuapp.com/user/login';
 
   try {
     const response = await axios.post(url, userCredentials);

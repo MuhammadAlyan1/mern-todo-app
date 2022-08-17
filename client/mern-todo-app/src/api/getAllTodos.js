@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getAllTodos = async ({ userId, dispatch }) => {
-  const url = 'http://localhost:5000/api/todos/' + userId;
+  const url = 'https://alyan-todo-list-api.herokuapp.com/api/todos/' + userId;
   try {
     const response = await axios.get(url);
 
