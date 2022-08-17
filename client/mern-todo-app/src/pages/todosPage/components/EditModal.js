@@ -10,8 +10,39 @@ const EditModal = ({
   todo,
   dispatch,
 }) => {
-  const [newTodoText, setNewTodoText] = useState('');
   const { _id: todoId, contents: todoText, isCompleted } = todo;
+  const [newTodoText, setNewTodoText] = useState(todoText);
+
+  const styles = {
+    stack: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: '25px',
+    },
+
+    modal: {
+      position: 'absolute',
+      top: '20%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      padding: 2,
+      backgroundColor: '#333',
+      width: { xs: '250px', sm: '500px' },
+      height: '100px',
+      borderRadius: 2,
+    },
+
+    iconButton: {
+      color: 'primary.main',
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
+    },
+
+    editIcon: {
+      fontSize: 28,
+    },
+  };
 
   const handleEditClick = () => {
     updateTodo({
@@ -28,20 +59,8 @@ const EditModal = ({
       open={isEditModalShowing}
       onClose={() => setIsEditModalShowing(false)}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          padding: 2,
-          backgroundColor: '#333',
-          width: { xs: '250px', sm: '500px' },
-          height: '100px',
-          borderRadius: 2,
-        }}
-      >
-        <Stack direction="row" alignItems="center" mt="25px">
+      <Box sx={styles.modal}>
+        <Stack sx={styles.stack}>
           <TextField
             label="Edit Task"
             size="small"
@@ -50,8 +69,8 @@ const EditModal = ({
             value={newTodoText}
             onChange={(e) => setNewTodoText(e.target.value)}
           />
-          <IconButton shape="square" onClick={handleEditClick}>
-            <EditIcon fontSize="medium" color="primary" />
+          <IconButton sx={styles.iconButton} onClick={handleEditClick}>
+            <EditIcon sx={styles.editIcon} />
           </IconButton>
         </Stack>
       </Box>
