@@ -10,7 +10,7 @@ const deleteTodo = async ({ todoId, userId, dispatch }) => {
       type: 'SET_SNACKBAR',
       payload: {
         isSnackbarShowing: true,
-        snackbarMessage: 'Todo Deleted',
+        snackbarMessage: 'Task Deleted',
         snackbarSeverity: 'error',
       },
     });
