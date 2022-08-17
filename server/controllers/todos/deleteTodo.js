@@ -17,15 +17,10 @@ const deleteTodo = async (req, res) => {
       return res.status(404).json('User does not exist');
     }
 
-    const todoObjectId = mongoose.Types.ObjectId(todoId);
-
-    const deletedTodo = await Todos.deleteOne({
-      _id: todoObjectId,
-    });
     user.listOfTodos = user.listOfTodos.filter((todo) => todo !== todoId);
     user.save();
 
-    return res.status(200).json({ deletedTodo });
+    return res.status(200).json('Todo deleted');
   } catch (error) {
     console.log(error);
     return res.status(401).json('Please provide todo ID');
