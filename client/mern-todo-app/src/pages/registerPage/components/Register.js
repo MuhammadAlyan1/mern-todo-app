@@ -11,6 +11,27 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const { state, dispatch } = useContext(todoAppContext);
 
+  const styles = {
+    stack: {
+      color: '#eee',
+      gap: 1.5,
+      minWidth: {
+        xs: '300px',
+        sm: '400px',
+      },
+    },
+
+    box: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+
+    button: {
+      color: 'error.main',
+      '&:hover': { backgroundColor: 'transparent' },
+    },
+  };
+
   return (
     <>
       {state.userId && <Navigate to="/todosPage" />}
@@ -20,16 +41,7 @@ const Register = () => {
         justifyContent="center"
         style={{ minHeight: '90vh' }}
       >
-        <Stack
-          spacing={1.5}
-          sx={{
-            minWidth: {
-              xs: '300px',
-              sm: '400px',
-            },
-            color: '#eee',
-          }}
-        >
+        <Stack sx={styles.stack}>
           <Typography textAlign="center" variant="h4" component="div">
             Register
           </Typography>
@@ -54,16 +66,10 @@ const Register = () => {
           >
             Register
           </Button>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={styles.box}>
             <Typography>Already have an account?</Typography>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <Button
-                variant="text"
-                color="error"
-                sx={{
-                  '&:hover': { backgroundColor: 'transparent' },
-                }}
-              >
+              <Button variant="text" sx={styles.button}>
                 Login
               </Button>
             </Link>
