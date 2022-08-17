@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const connectDB = (uri) => {
+const connectDB = () => {
   try {
-    mongoose.connect(uri);
+    mongoose.connect(process.env.MONGO_URI);
   } catch (error) {
     console.log(error);
   }
