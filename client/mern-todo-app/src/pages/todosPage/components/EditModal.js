@@ -54,6 +54,11 @@ const EditModal = ({
     setNewTodoText('');
   };
 
+  const handleEditEnter = (event, handleEditClick) => {
+    if (event.key !== 'Enter') return;
+    handleEditClick();
+  };
+
   return (
     <Modal
       open={isEditModalShowing}
@@ -68,6 +73,7 @@ const EditModal = ({
             fullWidth
             value={newTodoText}
             onChange={(e) => setNewTodoText(e.target.value)}
+            onKeyDown={(event) => handleEditEnter(event, handleEditClick)}
           />
           <IconButton sx={styles.iconButton} onClick={handleEditClick}>
             <EditIcon sx={styles.editIcon} />
