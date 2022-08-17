@@ -11,6 +11,24 @@ const TodoList = () => {
   const { state, dispatch } = useContext(todoAppContext);
   const { listOfTodos, userId } = state;
 
+  const styles = {
+    box: {
+      maxWidth: {
+        xs: '400px',
+        sm: '500px',
+        md: '900px',
+      },
+      margin: 'auto',
+      marginTop: '50px',
+      marginBottom: '50px',
+    },
+    typography: {
+      color: '#eee',
+      textAlign: 'center',
+      marginBottom: '20px',
+    },
+  };
+
   useEffect(() => {
     getAllTodos({ userId, dispatch });
   }, []);
@@ -18,19 +36,8 @@ const TodoList = () => {
   return (
     <>
       {!state.userId && <Navigate to="/" />}
-      <Box
-        sx={{
-          maxWidth: {
-            xs: '400px',
-            sm: '500px',
-            md: '900px',
-          },
-          margin: 'auto',
-          marginTop: '50px',
-          marginBottom: '50px',
-        }}
-      >
-        <Typography variant="h2" color="#eee" textAlign="center" mb="20px">
+      <Box sx={styles.box}>
+        <Typography variant="h2" sx={styles.typography}>
           Tasks
         </Typography>
         {listOfTodos.map((todo) => (
