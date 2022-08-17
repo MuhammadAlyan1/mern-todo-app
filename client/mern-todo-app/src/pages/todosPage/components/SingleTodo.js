@@ -13,6 +13,19 @@ const SingleTodo = ({ todo }) => {
   const [isChecked, setIsChecked] = useState(todo.isCompleted);
   const [isEditModalShowing, setIsEditModalShowing] = useState(false);
 
+  const styles = {
+    stack: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      pt: '10px',
+      backgroundColor: isChecked ? '#292929' : '#373737',
+      mb: '20px',
+      pb: '10px',
+      borderRadius: '5px',
+      opacity: 0.95,
+    },
+  };
+
   const checkTodo = ({ contents, _id, isCompleted, dispatch }) => {
     setIsChecked(!isChecked);
     const data = {
@@ -31,18 +44,7 @@ const SingleTodo = ({ todo }) => {
   const { _id, contents, isCompleted } = todo;
   return (
     <>
-      <Stack
-        direction="row"
-        alignItems="center"
-        sx={{
-          pt: '10px',
-          backgroundColor: isChecked ? '#292929' : '#373737',
-          mb: '20px',
-          pb: '10px',
-          borderRadius: '5px',
-          opacity: 0.95,
-        }}
-      >
+      <Stack sx={styles.stack}>
         <Checkbox
           checked={isChecked}
           onClick={() => checkTodo({ contents, _id, isCompleted, dispatch })}
