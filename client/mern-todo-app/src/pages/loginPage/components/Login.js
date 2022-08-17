@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
     <>
-      {state.userId && <Navigate to="/todosPage" />}
+      {state.userId && <Navigate to="mern-todo-app/todosPage" />}
       <Grid
         container
         alignItems="center"

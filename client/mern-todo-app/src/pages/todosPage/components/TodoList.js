@@ -35,7 +35,7 @@ const TodoList = () => {
 
   return (
     <>
-      {!state.userId && <Navigate to="/" />}
+      {!state.userId && <Navigate to="mern-todo-app/" />}
       <Box sx={styles.box}>
         <Typography variant="h2" sx={styles.typography}>
           Tasks
