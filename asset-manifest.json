@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/mern-todo-app/static/css/main.5a126462.css",
-    "main.js": "/mern-todo-app/static/js/main.fb787993.js",
+    "main.js": "/mern-todo-app/static/js/main.e2037c83.js",
     "index.html": "/mern-todo-app/index.html",
     "main.5a126462.css.map": "/mern-todo-app/static/css/main.5a126462.css.map",
-    "main.fb787993.js.map": "/mern-todo-app/static/js/main.fb787993.js.map"
+    "main.e2037c83.js.map": "/mern-todo-app/static/js/main.e2037c83.js.map"
   },
   "entrypoints": [
     "static/css/main.5a126462.css",
-    "static/js/main.fb787993.js"
+    "static/js/main.e2037c83.js"
   ]
 }
