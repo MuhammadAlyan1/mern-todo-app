@@ -7,7 +7,7 @@ import TodosPage from './pages/todosPage/index';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 export const todoAppContext = createContext();
 
@@ -33,13 +33,13 @@ function App() {
     <todoAppContext.Provider value={{ state, dispatch }}>
       <ThemeProvider theme={darkTheme}>
         <div className="App">
-          <BrowserRouter>
+          <HashRouter>
             <Routes>
-              <Route path="mern-todo-app/" element={<LoginPage />} />
+              <Route path="/" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/todosPage" element={<TodosPage />} />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </div>
       </ThemeProvider>
     </todoAppContext.Provider>
