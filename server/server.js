@@ -17,7 +17,7 @@ connectDB(process.env.MONGO_URI);
 
 mongoose.connection.once('open', () => {
   console.log('Database connected');
-  app.listen(process.env.PORT, () => {
+  app.listen(process.env.PORT || 5000, () => {
     console.log(`Listening on port ${process.env.PORT}`);
   });
 });
