@@ -59,6 +59,11 @@ const CreateTodoModal = ({ isTodoModalShowing, setIsTodoModalShowing }) => {
     setTodoText('');
   };
 
+  const handleCreateTodoEnter = (event, handleCreateTodo) => {
+    if (event.key !== 'Enter') return;
+    handleCreateTodo();
+  };
+
   return (
     <Modal
       open={isTodoModalShowing}
@@ -73,6 +78,9 @@ const CreateTodoModal = ({ isTodoModalShowing, setIsTodoModalShowing }) => {
             fullWidth
             value={todoText}
             onChange={(e) => setTodoText(e.target.value)}
+            onKeyDown={(event) =>
+              handleCreateTodoEnter(event, handleCreateTodo)
+            }
           />
           <IconButton sx={styles.iconButton} onClick={handleCreateTodo}>
             <AddBoxIcon sx={styles.addButton} />
