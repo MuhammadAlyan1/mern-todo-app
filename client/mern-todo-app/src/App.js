@@ -36,8 +36,8 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="mern-todo-app/" element={<LoginPage />} />
-              <Route path="mern-todo-app/register" element={<RegisterPage />} />
-              <Route path="mern-todo-app/todosPage" element={<TodosPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/todosPage" element={<TodosPage />} />
             </Routes>
           </BrowserRouter>
         </div>

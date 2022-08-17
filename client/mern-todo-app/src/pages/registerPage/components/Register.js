@@ -34,7 +34,7 @@ const Register = () => {
 
   return (
     <>
-      {state.userId && <Navigate to="mern-todo-app/todosPage" />}
+      {state.userId && <Navigate to="/todosPage" />}
       <Grid
         container
         alignItems="center"
