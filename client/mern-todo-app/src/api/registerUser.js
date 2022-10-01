@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const registerUser = async (userCredentials, dispatch) => {
-  const url = 'https://alyan-todo-list-api.herokuapp.com/user/register';
-
+  const url = 'https://mern-todo-app-production.up.railway.app/user/register';
   try {
     const response = await axios.post(url, userCredentials);
     const { userId } = response.data;
